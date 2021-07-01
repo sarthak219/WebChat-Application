@@ -1,0 +1,213 @@
+/*
+Colour palette
+#171717 , rgb(23, 23, 23)
+#444444 , rgb(68, 68, 68)
+#EDEDED , rgb(237, 237, 237)
+#e6457f , rgb(230, 69, 127)
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgba(237, 237, 237, 1);
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 2.2rem;
+    font-weight: 300;
+}
+
+p {
+    margin: 0;
+}
+
+/* navbar */
+
+nav {
+    background-color: rgb(24, 186, 200);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.navbar-title {
+    color: white;
+    font-weight: 300;
+    letter-spacing: 2px;
+    padding: 20px;
+}
+
+/* Main App Body*/
+
+.appContainer {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+}
+
+.appWindow {
+    position: absolute;
+    height: 70%;
+    width: 70%;
+    max-width: 1200px;
+    background-color: blue;
+    top: 20%;
+    border-radius: 25px;
+    box-shadow: 2px 3px 10px 5px #9e9e9e;
+}
+
+/* menu */
+
+.menuContainer {
+    width: 25%;
+    height: 100%;
+    float: left;
+    background-color: rgb(27, 27, 27);
+    color: white;
+    box-shadow: inset -1px 0 0 0 rgb(184, 184, 184);
+    border-radius: 25px 0 0 25px;
+}
+
+.menuTitleBar {
+    height: 15%;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    padding-top: 40px;
+    border-radius: 25px 0 0 0;
+}
+
+hr.menuDivider {
+    width: 90%;
+    height: 2px;
+    margin: 0 auto;
+    color: rgb(184, 184, 184);
+}
+
+.menuPanel {
+    height: 90%;
+    overflow-y: scroll;
+    padding: 20px;
+    border-radius: 0 0 0 25px;
+}
+
+/* Chat section */
+
+.chatContainer {
+    float: right;
+    width: 75%;
+    height: 100%;
+    background-color: rgb(51, 51, 51);
+    color: white;
+    border-radius: 0 25px 25px 0;
+}
+
+.chatTitleBar {
+    height: 15%;
+    min-height: 50px;
+    background-color: rgb(27, 27, 27);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    padding-left: 3%;
+    padding-top: 40px;
+    border-radius: 0 25px 0 0;
+}
+
+.chatWindow {
+    height: 75%;
+    background-color: rgb(51, 51, 51);
+    overflow-y: scroll;
+    padding: 2% 3%;
+}
+
+/* typing area */
+
+.chatBox {
+    height: 10%;
+    min-height: 40px;
+    padding: 1.2%;
+    padding-left: 3%;
+    border-radius: 0 0 25px 0;
+}
+
+.textBox {
+    resize: none;
+    height: 100%;
+    width: 80%;
+    font-size: 20px;
+    padding-top: 0.5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 100px;
+    outline: none;
+    float: left;
+}
+
+.textBox:focus {
+    box-shadow: 0 0 2px 2px rgb(24, 186, 200);
+}
+
+.sendBtn {
+    width: 16%;
+    height: 100%;
+    background-color: rgb(24, 186, 200);
+    border-radius: 50px;
+    padding: auto;
+    border: none;
+    margin-left: 2%;
+}
+
+/* messages */
+
+.msgContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.sentMsgContainer {
+    flex-direction: row-reverse;
+}
+
+.replyMsgContainer {
+    flex-direction: row;
+}
+
+.message {
+    padding: 15px 25px 5px;
+    max-width: 60%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.reply {
+    background-color: rgb(24, 186, 200);
+    border-radius: 20px 20px 20px 0;
+    float: left;
+}
+
+.sent {
+    background-color: rgb(110, 110, 110);
+    border-radius: 20px 20px 0 20px;
+    float: right;
+    flex-direction: row-reverse;
+}
+
+.msgTime {
+    text-align: right;
+    font-size: 12px;
+}

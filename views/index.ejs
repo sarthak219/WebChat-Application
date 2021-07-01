@@ -1,0 +1,61 @@
+<%-include("partials/header")-%>
+    <div class="appContainer">
+        <div class="appWindow">
+            <div class="menuContainer">
+                <div class="menuTitleBar">
+                    <h2 class="userTitle">Hi Sarthak!</h2>
+                </div>
+                <hr class="menuDivider">
+                <div class="menuPanel">
+                    <p>menuPanel</p>
+                </div>
+            </div>
+            <div class="chatContainer">
+                <div class="chatTitleBar">
+                    <h2 class="userTitle">Room: Chat Room 1</h2>
+                </div>
+                <div class="chatWindow">
+                    <div class="msgContainer replyMsgContainer">
+                        <div class="message reply">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod
+                                tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation
+                                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                reprehenderit
+                                in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <div class="msgDetails">
+                                <p class="msgTime">11:11 p.m.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <%for(let x=0;x<20;++x) {%>
+                        <div class="msgContainer sentMsgContainer">
+                            <div class="message sent">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum autem dolores, a deleniti rem nisi.</p>
+                                <div class="msgDetails">
+                                    <p class="msgTime">11:11 p.m.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="msgContainer replyMsgContainer">
+                            <div class="message reply">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, sit!</p>
+                                <div class="msgDetails">
+                                    <p class="msgTime">10:10 p.m.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <%}%>
+                </div>
+                <div class="chatBox">
+                    <textarea name="messageTypingArea" id="messageTypingArea" class="textBox"></textarea>
+                    <button class="sendBtn">Send <i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%-include("partials/footer")-%>
