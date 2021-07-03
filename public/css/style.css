@@ -38,6 +38,7 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-shadow: 0 -1px 10px 0 black;
 }
 
 .navbar-title {
@@ -89,6 +90,11 @@ nav {
     border-radius: 25px 0 0 0;
 }
 
+.nameTitle {
+    font-weight: 400;
+    color: rgb(24, 186, 200);
+}
+
 hr.menuDivider {
     width: 90%;
     height: 2px;
@@ -109,9 +115,11 @@ hr.menuDivider {
     float: right;
     width: 75%;
     height: 100%;
-    background-color: rgb(51, 51, 51);
+    /* background-color: rgb(51, 51, 51); */
     color: white;
     border-radius: 0 25px 25px 0;
+    background-color: rgb(27, 27, 27);
+    /* background-image: url("https://www.transparenttextures.com/patterns/escheresque-dark.png"); */
 }
 
 .chatTitleBar {
@@ -127,11 +135,15 @@ hr.menuDivider {
     border-radius: 0 25px 0 0;
 }
 
+.roomname {
+    color: white;
+    font-weight: 400;
+}
+
 .chatWindow {
     height: 75%;
-    background-color: rgb(51, 51, 51);
     overflow-y: scroll;
-    padding: 2% 3%;
+    padding: 2% 7%;
 }
 
 /* typing area */
@@ -164,11 +176,12 @@ hr.menuDivider {
 .sendBtn {
     width: 16%;
     height: 100%;
-    background-color: rgb(24, 186, 200);
     border-radius: 50px;
     padding: auto;
     border: none;
     margin-left: 2%;
+    background-color: black;
+    color: rgb(24, 186, 200);
 }
 
 /* messages */
