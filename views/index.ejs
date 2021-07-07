@@ -3,7 +3,11 @@
         <div class="appWindow">
             <div class="menuContainer">
                 <div class="menuTitleBar">
-                    <h2 class="nameTitle">Hi, Sarthak!</h2>
+                    <h2 class="nameTitle">Hi,
+                        <span id="senderName">
+                            <%= currentUser.name %>!
+                        </span>
+                    </h2>
                 </div>
                 <hr class="menuDivider">
                 <div class="menuPanel">
@@ -11,7 +15,9 @@
                         <div class="contactsContainer">
                             <img class="profilePic" src="/images/user.png" alt="profilePic">
                             <div class="contactNameContainer">
-                                <p class="contactName">Arihaan</p>
+                                <p class="contactName">
+                                    Suyash
+                                </p>
                             </div>
                         </div>
                         <hr class="menuDivider">
@@ -19,72 +25,86 @@
                 </div>
             </div>
             <div class="chatContainer">
-                <div class="chatTitleBar">
-                    <h2 class="roomname">Room: Chat Room 1</h2>
+                <div class="chatTitleContainer">
+                    <div class="titleAndPicContainer">
+                        <img class="profilePic" src="/images/user.png" alt="profilePic">
+                        <h2 class="roomname">
+                            <%= currentReceiver.name %>
+                        </h2>
+                    </div>
                 </div>
                 <hr class="menuDivider" style="width:95%">
                 <div id="chatWindow" class="chatWindow">
-                    <%for(let x=0;x<20;++x) {%>
-                        <div class="msgContainer replyMsgContainer">
-                            <div class="message reply">
-                                <p class="senderName">Angela</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, sit!</p>
-                                <div class="msgDetails">
-                                    <p class="msgTime">10:10 p.m.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="msgContainer sentMsgContainer">
-                            <div class="message sent">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum autem dolores, a
-                                    deleniti rem nisi.</p>
-                                <div class="msgDetails">
-                                    <p class="msgTime">11:11 p.m.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <%}%>
-                            <!-- Dummy texts for texting -->
+                    <%chat.conversations.forEach(message=> {%>
+                        <% if(message.sender===currentReceiver.name) { %>
                             <div class="msgContainer replyMsgContainer">
                                 <div class="message reply">
-                                    <p class="senderName">Angela</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod
-                                        tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud
-                                        exercitation
-                                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                        in
-                                        reprehenderit
-                                        in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                                        occaecat
-                                        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                        laborum.
-                                    </p>
+                                    <p id="receiverName" class="receiverName"><%= currentReceiver.name %> </p>
+                                    <p><%= message.content %>  </p>
                                     <div class="msgDetails">
-                                        <p class="msgTime">11:11 p.m.</p>
+                                        <p class="msgTime"><%= message.sendingTime %></p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="msgContainer sentMsgContainer">
-                                <div class="message sent">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod
-                                        tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud
-                                        exercitation.
-                                    </p>
-                                    <div class="msgDetails">
-                                        <p class="msgTime">11:11 p.m.</p>
+                            <% } else if (message.sender===currentUser.name) {%>
+                                <div class="msgContainer sentMsgContainer">
+                                    <div class="message sent">
+                                        <p><%= message.content %> </p>
+                                        <div class="msgDetails">
+                                            <p class="msgTime"><%= message.sendingTime %></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                <% }%>
+                                    <%});%>
+                                        <!-- Dummy texts for texting -->
+                                        <!-- <div class="msgContainer replyMsgContainer">
+                                            <div class="message reply">
+                                                <p class="senderName">Angela</p>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod
+                                                    tempor
+                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                                    veniam, quis
+                                                    nostrud
+                                                    exercitation
+                                                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                                    irure dolor
+                                                    in
+                                                    reprehenderit
+                                                    in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                                    Excepteur sint
+                                                    occaecat
+                                                    cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                                                    anim id est
+                                                    laborum.
+                                                </p>
+                                                <div class="msgDetails">
+                                                    <p class="msgTime">11:11 p.m.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="msgContainer sentMsgContainer">
+                                            <div class="message sent">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod
+                                                    tempor
+                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                                    veniam, quis
+                                                    nostrud
+                                                    exercitation.
+                                                </p>
+                                                <div class="msgDetails">
+                                                    <p class="msgTime">11:11 p.m.</p>
+                                                </div>
+                                            </div>
+                                        </div> -->
                 </div>
                 <div class="chatBox">
-                    <textarea name="messageTypingArea" id="messageTypingArea" class="textBox"></textarea>
-                    <button class="sendBtn">Send <i class="fas fa-paper-plane"></i></button>
+                    <form action="/<%=currentUser.name%>/<%=currentReceiver.name%>" method="post">
+                        <textarea name="messageTypingArea" id="messageTypingArea" class="textBox"></textarea>
+                        <button type="submit" class="sendBtn">Send <i class="fas fa-paper-plane"></i></button>
+                    </form>
                 </div>
             </div>
         </div>

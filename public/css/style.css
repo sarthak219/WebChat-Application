@@ -12,7 +12,8 @@ Colour palette
 }
 
 body {
-    background-color: rgba(237, 237, 237, 1);
+    /* background-color: rgba(237, 237, 237, 1); */
+    background-color: rgb(27, 27, 27);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -51,20 +52,25 @@ nav {
 /* Main App Body*/
 
 .appContainer {
-    height: 90vh;
+    /* height: 90vh; */
+    height: 100vh;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 
 .appWindow {
+    display: flex;
     position: absolute;
-    height: 70%;
-    width: 70%;
-    max-width: 1200px;
-    background-color: blue;
-    top: 20%;
+    /* height: 88%; */
+    height: 100%;
+    width: 100%;
+    /* max-width: 1200px; */
+    /* background-color: blue; */
+    /* top: 11.67%; */
+    top:0%;
     border-radius: 25px;
-    box-shadow: 2px 3px 10px 5px #9e9e9e;
+    /* box-shadow: 2px 3px 10px 5px #9e9e9e; */
 }
 
 /* menu */
@@ -72,7 +78,6 @@ nav {
 .menuContainer {
     width: 25%;
     height: 100%;
-    float: left;
     background-color: rgb(27, 27, 27);
     color: white;
     box-shadow: inset -1px 0 0 0 rgb(184, 184, 184);
@@ -106,13 +111,22 @@ hr.menuDivider {
     height: calc(85% - 2px);
     overflow-y: scroll;
     border-radius: 0 0 0 25px;
+    width: 100%;
+    /* background-color: red; */
 }
 
 .contactsContainer {
     display: flex;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-left: 20px;
+    padding: 5px 10px;
+    margin: 5px 0px;
+    margin-left: 10px;
+    width: calc(100% - 20px);
+    border-radius: 5px;
+}
+
+.contactsContainer:hover {
+    background-color: rgb(61, 61, 61);
+    cursor: pointer;
 }
 
 img.profilePic {
@@ -124,7 +138,7 @@ img.profilePic {
 .contactNameContainer {
     padding: 10px;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -141,7 +155,7 @@ img.profilePic {
     /* background-image: url("https://www.transparenttextures.com/patterns/escheresque-dark.png"); */
 }
 
-.chatTitleBar {
+.chatTitleContainer {
     height: 15%;
     min-height: 50px;
     background-color: rgb(27, 27, 27);
@@ -154,9 +168,15 @@ img.profilePic {
     border-radius: 0 25px 0 0;
 }
 
+.titleAndPicContainer {
+    display: flex;
+}
+
 .roomname {
     color: white;
     font-weight: 400;
+    padding-left: 15px;
+    padding-top: 2px;
 }
 
 .chatWindow {
@@ -168,14 +188,20 @@ img.profilePic {
 /* typing area */
 
 .chatBox {
-    height: 10%;
+    width: 100%;
+    height: calc(10% - 2px);
     min-height: 40px;
     padding: 1.2%;
     padding-left: 3%;
     border-radius: 0 0 25px 0;
+    display: flex;
 }
 
-.textBox {
+form {
+    width: 100%;
+}
+
+#messageTypingArea {
     resize: none;
     height: 100%;
     width: 80%;
@@ -188,11 +214,11 @@ img.profilePic {
     float: left;
 }
 
-.textBox:focus {
+textarea#messageTypingArea:focus {
     box-shadow: 0 0 2px 2px rgb(24, 186, 200);
 }
 
-.sendBtn {
+button.sendBtn {
     width: 16%;
     height: 100%;
     border-radius: 50px;
@@ -209,6 +235,7 @@ img.profilePic {
     width: 100%;
     display: flex;
     flex-direction: row-reverse;
+    position: relative;
 }
 
 .sentMsgContainer {
@@ -221,6 +248,7 @@ img.profilePic {
 
 .message {
     padding: 15px 25px 5px;
+    min-width: 20%;
     max-width: 60%;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -233,13 +261,20 @@ img.profilePic {
 }
 
 .sent {
-    background-color: rgb(110, 110, 110);
+    background-color: rgb(129, 129, 129);
     border-radius: 20px 20px 0 20px;
     float: right;
     flex-direction: row-reverse;
 }
 
+.receiverName {
+    color: black;
+    font-size: 0.8rem;
+    padding-bottom: 10px;
+}
+
 .msgTime {
     text-align: right;
     font-size: 12px;
+    padding-top: 10px;
 }
