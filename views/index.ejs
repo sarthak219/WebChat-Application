@@ -11,7 +11,7 @@
                 </div>
                 <hr class="menuDivider">
                 <div class="menuPanel">
-                    <%for(let x=0;x<20;++x) {%>
+                    <%for(let x=0;x<10;++x) {%>
                         <div class="contactsContainer">
                             <img class="profilePic" src="/images/user.png" alt="profilePic">
                             <div class="contactNameContainer">
@@ -39,70 +39,39 @@
                         <% if(message.sender===currentReceiver.name) { %>
                             <div class="msgContainer replyMsgContainer">
                                 <div class="message reply">
-                                    <p id="receiverName" class="receiverName"><%= currentReceiver.name %> </p>
-                                    <p><%= message.content %>  </p>
+                                    <!-- <p id="receiverName" class="receiverName"><%= // currentReceiver.name %> </p> -->
+                                    <p>
+                                        <%= message.content %>
+                                    </p>
                                     <div class="msgDetails">
-                                        <p class="msgTime"><%= message.sendingTime %></p>
+                                        <p class="msgTime">
+                                            <%= message.sendingTime %>
+                                        </p>
                                     </div>
+                                    <div class="arrow  leftArrow"></div>
                                 </div>
                             </div>
                             <% } else if (message.sender===currentUser.name) {%>
                                 <div class="msgContainer sentMsgContainer">
                                     <div class="message sent">
-                                        <p><%= message.content %> </p>
+                                        <p>
+                                            <%= message.content %>
+                                        </p>
                                         <div class="msgDetails">
-                                            <p class="msgTime"><%= message.sendingTime %></p>
+                                            <p class="msgTime">
+                                                <%= message.sendingTime %>
+                                            </p>
                                         </div>
+                                        <div class="arrow rightArrow"></div>
                                     </div>
                                 </div>
                                 <% }%>
                                     <%});%>
-                                        <!-- Dummy texts for texting -->
-                                        <!-- <div class="msgContainer replyMsgContainer">
-                                            <div class="message reply">
-                                                <p class="senderName">Angela</p>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod
-                                                    tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam, quis
-                                                    nostrud
-                                                    exercitation
-                                                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                                    irure dolor
-                                                    in
-                                                    reprehenderit
-                                                    in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                                    Excepteur sint
-                                                    occaecat
-                                                    cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                                                    anim id est
-                                                    laborum.
-                                                </p>
-                                                <div class="msgDetails">
-                                                    <p class="msgTime">11:11 p.m.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="msgContainer sentMsgContainer">
-                                            <div class="message sent">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod
-                                                    tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam, quis
-                                                    nostrud
-                                                    exercitation.
-                                                </p>
-                                                <div class="msgDetails">
-                                                    <p class="msgTime">11:11 p.m.</p>
-                                                </div>
-                                            </div>
-                                        </div> -->
                 </div>
                 <div class="chatBox">
                     <form action="/<%=currentUser.name%>/<%=currentReceiver.name%>" method="post">
-                        <textarea name="messageTypingArea" id="messageTypingArea" class="textBox"></textarea>
+                        <textarea name="messageTypingArea" id="messageTypingArea" class="textBox"
+                            placeholder="Enter your message here"></textarea>
                         <button type="submit" class="sendBtn">Send <i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>

@@ -80,9 +80,9 @@ app.route("/:senderName/:receiverName")
                         Chat.findOne({ participants: { $all: [senderName, receiverName] } }, (err, foundChat) => {
                             if (!err) {
                                 if (foundChat) {
-                                    console.log(foundSender);
-                                    console.log(foundReceiver);
-                                    console.log(foundChat);
+                                    // console.log(foundSender);
+                                    // console.log(foundReceiver);
+                                    // console.log(foundChat);
                                     res.render("index", { currentUser: foundSender, currentReceiver: foundReceiver, chat: foundChat });
                                 } else {
                                     const chat = new Chat({
@@ -91,7 +91,7 @@ app.route("/:senderName/:receiverName")
                                     });
                                     chat.save();
                                     const url = "/" + senderName + "/" + receiverName;
-                                    console.log(url);
+                                    // console.log(url);
                                     res.redirect(url);
                                 }
                             } else {
@@ -111,14 +111,15 @@ app.route("/:senderName/:receiverName")
         const senderName = _.lowerCase(req.params.senderName);
         const receiverName = _.lowerCase(req.params.receiverName);
         const messageText = req.body.messageTypingArea;
-        if (messageText !== null || messageText !== "") {
+        const url = "/" + senderName + "/" + receiverName;
+        if (messageText !== null && messageText !== "") {
             const message = {
                 content: messageText,
                 sender: senderName,
                 receiver: receiverName,
                 sendingTime: new Date().toLocaleTimeString()
             }
-            console.log(message);
+            // console.log(message);
             User.findOne({ name: senderName }, (err, foundSender) => {
                 if (!err) {
                     User.findOne({ name: receiverName }, (err, foundReceiver) => {
@@ -127,12 +128,7 @@ app.route("/:senderName/:receiverName")
                                 { participants: { $all: [senderName, receiverName] } },
                                 { $push: { conversations: message } },
                                 (err, foundChat) => {
-                                    if (!err) {
-                                        if (foundChat) {
-                                            console.log("Convos", foundChat.conversations);
-                                        }
-                                        const url = "/" + senderName + "/" + receiverName;
-                                        console.log(url);
+                                    if (err) {
                                         res.redirect(url);
                                     } else {
                                         conslole.log(err);
@@ -146,6 +142,8 @@ app.route("/:senderName/:receiverName")
                     console.log(err);
                 }
             });
+        } else {
+            res.redirect(url);
         }
     })
 
