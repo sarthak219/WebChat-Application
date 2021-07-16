@@ -49,24 +49,26 @@ app.route("/")
             if (!err) {
                 if (!foundSender) {
                     const sender = new User({ name: senderName, contacts: [] });
+                    console.log("new user created with name: ", senderName);
                     sender.save();
                 }
+                User.findOne({ name: receiverName }, (err, foundReceiver) => {
+                    if (!err) {
+                        if (!foundReceiver) {
+                            const receiver = new User({ name: receiverName, contacts: [] });
+                            console.log("new user created with name: ", receiverName);
+                            receiver.save();
+                        }
+                        const url = "/" + senderName + "/" + receiverName;
+                        res.redirect(url);
+                    } else {
+                        console.log(err);
+                    }
+                });
             } else {
                 console.log(err);
             }
         });
-        User.findOne({ name: receiverName }, (err, foundReceiver) => {
-            if (!err) {
-                if (!foundReceiver) {
-                    const receiver = new User({ name: receiverName, contacts: [] });
-                    receiver.save();
-                }
-            } else {
-                console.log(err);
-            }
-        });
-        const url = "/" + senderName + "/" + receiverName;
-        res.redirect(url);
     })
 
 app.route("/:senderName/:receiverName")
@@ -80,22 +82,30 @@ app.route("/:senderName/:receiverName")
                         Chat.findOne({ participants: { $all: [senderName, receiverName] } }, (err, foundChat) => {
                             if (!err) {
                                 if (foundChat) {
-                                    // console.log(foundSender);
-                                    // console.log(foundReceiver);
-                                    // console.log(foundChat);
-                                    res.render("index", { currentUser: foundSender, currentReceiver: foundReceiver, chat: foundChat });
+                                    let isContact = false;
+                                    foundSender.contacts.forEach((contact) => {
+                                        if (contact === receiverName) {
+                                            isContact = true;
+                                        }
+                                    })
+                                    res.render("index", {
+                                        currentUser: foundSender,
+                                        currentReceiver: foundReceiver,
+                                        chat: foundChat,
+                                        isInContacts: isContact
+                                    });
                                 } else {
                                     const chat = new Chat({
                                         participants: [senderName, receiverName],
                                         conversations: []
                                     });
+                                    console.log("created new char between: ", chat.participants);
                                     chat.save();
                                     const url = "/" + senderName + "/" + receiverName;
-                                    // console.log(url);
                                     res.redirect(url);
                                 }
                             } else {
-                                conslole.log(err);
+                                console.log(err);
                             }
                         });
                     } else {
@@ -119,21 +129,22 @@ app.route("/:senderName/:receiverName")
                 receiver: receiverName,
                 sendingTime: new Date().toLocaleTimeString()
             }
-            // console.log(message);
             User.findOne({ name: senderName }, (err, foundSender) => {
                 if (!err) {
                     User.findOne({ name: receiverName }, (err, foundReceiver) => {
                         if (!err) {
-                            Chat.updateOne(
-                                { participants: { $all: [senderName, receiverName] } },
-                                { $push: { conversations: message } },
-                                (err, foundChat) => {
-                                    if (err) {
-                                        res.redirect(url);
-                                    } else {
-                                        conslole.log(err);
-                                    }
-                                });
+                            if (foundSender && foundReceiver) {
+                                Chat.updateOne(
+                                    { participants: { $all: [senderName, receiverName] } },
+                                    { $push: { conversations: message } },
+                                    (err, foundChat) => {
+                                        if (!err) {
+                                            res.redirect(url);
+                                        } else {
+                                            console.log(err);
+                                        }
+                                    });
+                            }
                         } else {
                             console.log(err);
                         }
@@ -146,6 +157,21 @@ app.route("/:senderName/:receiverName")
             res.redirect(url);
         }
     })
+
+app.route("/add-contact/:senderName/:receiverName")
+    .get((req, res) => {
+        const senderName = _.lowerCase(req.params.senderName);
+        const receiverName = _.lowerCase(req.params.receiverName);
+        const url = "/" + senderName + "/" + receiverName;
+
+        User.updateOne({ name: senderName }, { $addToSet: { contacts: receiverName } }, (err) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.redirect(url);
+            }
+        });
+    });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

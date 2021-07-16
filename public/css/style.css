@@ -10,6 +10,9 @@ Colour palette
     --blueColor: rgb(24, 186, 200);
     --greyColor: rgb(129, 129, 129);
     --bg-dark: rgb(0, 0, 0);
+    --bg-darkGrey: rgb(10, 10, 10);
+
+    --f-roboto: 'Roboto', sans-serif;
 }
 
 * {
@@ -19,7 +22,7 @@ Colour palette
 
 body {
     background-color: var(--bg-dark);
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--f-roboto);
 }
 
 h1, h2 {
@@ -72,7 +75,7 @@ nav {
     border-radius: 25px;
 }
 
-/* menu */
+/* Menu */
 
 .menuContainer {
     width: 25%;
@@ -80,7 +83,7 @@ nav {
     background-color: var(--bg-dark);
     color: white;
     box-shadow: inset -1px 0 0 0 rgb(184, 184, 184);
-    border-radius: 25px 0 0 25px;
+    background-color: var(--bg-darkGrey);
 }
 
 .menuTitleBar {
@@ -105,14 +108,26 @@ hr.menuDivider {
     width: 90%;
     height: 2px;
     margin: 0 auto;
+    border-radius: 10px;
     color: rgb(184, 184, 184);
 }
 
 .menuPanel {
     height: calc(85% - 2px);
     overflow-y: scroll;
-    border-radius: 0 0 0 25px;
     width: 100%;
+}
+
+.noContacts {
+    display: flex;
+    padding: 3vh 1vw;
+    margin: 0.5vh 0px;
+    margin-left: 1vw;
+    width: calc(100% - 2vw);
+}
+
+.noContacts {
+    color: var(--greyColor);
 }
 
 .contactsContainer {
@@ -126,7 +141,8 @@ hr.menuDivider {
 }
 
 .contactsContainer:hover {
-    background-color: rgb(61, 61, 61);
+    background-color: rgb(26, 26, 26);
+    /* background-color: rgb(61, 61, 61); */
     cursor: pointer;
 }
 
@@ -146,6 +162,16 @@ img.profilePic {
     justify-content: center;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* Chat section */
 
 .chatContainer {
@@ -155,7 +181,6 @@ img.profilePic {
     color: white;
     border-radius: 0 25px 25px 0;
     background-color: var(--bg-dark);
-    /* background-image: url("https://www.transparenttextures.com/patterns/escheresque-dark.png"); */
 }
 
 .chatTitleContainer {
@@ -181,6 +206,18 @@ img.profilePic {
     font-weight: 400;
     padding-left: 15px;
     padding-top: 2px;
+}
+
+.addToContactsBtn {
+    font-size: 3vh;
+    margin: auto 50px auto auto;
+    border-radius: 100px;
+    padding: 5px;
+}
+
+.addToContactsBtn:hover {
+    color: var(--blueColor);
+    cursor:pointer;
 }
 
 .chatWindow {
@@ -209,13 +246,19 @@ form {
     resize: none;
     height: 100%;
     width: 80%;
-    font-size: 20px;
+    font-size: 15px;
     padding-top: 0.5%;
     padding-left: 2%;
     padding-right: 2%;
     border-radius: 100px;
     outline: none;
     float: left;
+    white-space: pre-wrap;
+}
+
+#messageTypingArea::placeholder {
+    font-size: 15px;
+    padding-top: 1%;
 }
 
 textarea#messageTypingArea:focus {
@@ -235,7 +278,7 @@ button.sendBtn {
     transition: background-color, color 200ms cubic-bezier(0.9, 0.06, 0.13, 0.98);
 }
 
-.sendBtn:hover{
+.sendBtn:hover {
     background-color: var(--blueColor);
     color: black;
     border: none;
@@ -298,19 +341,19 @@ button.sendBtn {
     height: 0;
     position: absolute;
     bottom: -10px;
-    border-top: 15px solid transparent; 
-    border-bottom: 15px solid transparent; 
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
 }
 
 .leftArrow {
     left: -12px;
-    border-left: 15px solid var(--greyColor); 
+    border-left: 15px solid var(--greyColor);
     transform: rotate(45deg);
 }
 
 .rightArrow {
     top: -10px;
     right: -12px;
-    border-right: 15px solid var(--blueColor); 
+    border-right: 15px solid var(--blueColor);
     transform: rotate(45deg);
 }
