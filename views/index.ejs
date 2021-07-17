@@ -18,14 +18,18 @@
                         <%} else {%>
                             <%currentUser.contacts.forEach((contactName)=>{%>
                                 <a href="/<%= currentUser.name %>/<%= contactName %>">
-                                    <div class="contactsContainer">
-                                        <img class="profilePic" src="/images/user.png" alt="profilePic">
-                                        <div class="contactNameContainer">
-                                            <p class="contactName">
-                                                <%= contactName %>
-                                            </p>
-                                        </div>
-                                    </div>
+                                    <% if(contactName===currentReceiver.name) {%>
+                                        <div class="contactsContainer activeContact">
+                                            <% } else { %>
+                                                <div class="contactsContainer">
+                                                    <% } %>
+                                                        <img class="profilePic" src="/images/user.png" alt="profilePic">
+                                                        <div class="contactNameContainer">
+                                                            <p class="contactName">
+                                                                <%= contactName %>
+                                                            </p>
+                                                        </div>
+                                                </div>
                                 </a>
                                 <hr class="menuDivider">
                                 <% }); %>
@@ -40,7 +44,8 @@
                             <%= currentReceiver.name %>
                         </h2>
                         <% if(!isInContacts) { %>
-                            <a href="/add-contact/<%=currentUser.name%>/<%=currentReceiver.name%>" class="addToContactsBtn"><i class="fas fa-user-plus"></i></a>
+                            <a href="/add-contact/<%=currentUser.name%>/<%=currentReceiver.name%>"
+                                class="addToContactsBtn"><i class="fas fa-user-plus"></i></a>
                             <% } %>
                     </div>
                 </div>

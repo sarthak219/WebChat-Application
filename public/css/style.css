@@ -92,7 +92,6 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* padding: 20px; */
     padding: 2vh 2vw;
     padding-top: 40px;
     border-radius: 25px 0 0 0;
@@ -142,8 +141,11 @@ hr.menuDivider {
 
 .contactsContainer:hover {
     background-color: rgb(26, 26, 26);
-    /* background-color: rgb(61, 61, 61); */
     cursor: pointer;
+}
+
+.activeContact {
+    background-color: rgb(37, 37, 37);
 }
 
 img.profilePic {
