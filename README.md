@@ -16,7 +16,7 @@ This is a simple online chatting application made from scratch mainly using Expr
 
 ## Screenshots
 - ### Sign Up Page
-![SignupPage](https://github.com/sarthak219/WebChat-Application/blob/master/images/screenshots/login.png)
+![SignupPage](https://github.com/sarthak219/WebChat-Application/blob/master/public/images/screenshots/login.png)
 
 - ### Personal Chat Room
-![chats](https://github.com/sarthak219/WebChat-Application/blob/master/images/screenshots/chats.png)
+![chats](https://github.com/sarthak219/WebChat-Application/blob/master/public/images/screenshots/chats.png)
