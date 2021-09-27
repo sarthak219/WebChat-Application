@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
 const _ = require('lodash');
-const users = require('./public/data/users.js');
 const app = express();
 
 
@@ -37,7 +36,7 @@ const chatSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 const Chat = mongoose.model("Chat", chatSchema);
 
-
+// home route
 app.route("/")
     .get((req, res) => {
         res.render("form");
@@ -71,6 +70,8 @@ app.route("/")
         });
     })
 
+
+// chat application route
 app.route("/:senderName/:receiverName")
     .get((req, res) => {
         const senderName = _.lowerCase(req.params.senderName);
@@ -158,6 +159,7 @@ app.route("/:senderName/:receiverName")
         }
     })
 
+// route to add receiver as a contact of the sender
 app.route("/add-contact/:senderName/:receiverName")
     .get((req, res) => {
         const senderName = _.lowerCase(req.params.senderName);
